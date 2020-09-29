@@ -32,7 +32,7 @@ class MobileDataUsageDaoTest {
             ApplicationProvider.getApplicationContext(),
             MobileDataUsageDatabase::class.java
         ).allowMainThreadQueries().build()
-        dao = database.shoppingDao()
+        dao = database.mobileDataUsageDao()
     }
 
     @After
