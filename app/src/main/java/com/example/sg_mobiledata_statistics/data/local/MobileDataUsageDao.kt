@@ -15,8 +15,8 @@ interface MobileDataUsageDao {
     @Query("SELECT * FROM mobile_data_usage_record")
     fun observeAllMobileDataUsageRecords(): LiveData<List<MobileDataUsageRecord>>
 
-    @Query("SELECT year, SUM(volume) as volume FROM mobile_data_usage_record")
+    @Query("SELECT year, SUM(volume) as totalVolume FROM mobile_data_usage_record")
     fun observeYearlyMobileDataUsage(): LiveData<List<YearlyMobileDataUsage>>
 
-    data class YearlyMobileDataUsage(val year:Int,val volume:Double)
+    data class YearlyMobileDataUsage(val year:Int,val totalVolume:Double)
 }
