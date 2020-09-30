@@ -12,7 +12,7 @@ interface MobileDataUsageDao {
     @Delete
     suspend fun deleteMobileDataUsageRecord(mobileDataUsageRecord: MobileDataUsageRecord)
 
-    @Delete
+    @Query("DELETE from mobile_data_usage_record")
     fun clearMobileDataUsageRecord()
 
     @Query("SELECT * FROM mobile_data_usage_record")
