@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.refreshMobileDataUsageStatus()
 //        viewModel=ViewModelProvider(this).get(MobileDataUsageViewModel::class.java)
 
-        viewModel.mobileDataUsageRecords.observe(this, Observer {
+        viewModel.mobileDataUsageRefreshStat.observe(this, Observer {
             msg.text=it.toString()
         })
         viewModel.mobileDataUsageRefreshStat.observe(this, Observer {
