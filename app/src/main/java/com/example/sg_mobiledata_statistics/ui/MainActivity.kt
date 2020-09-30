@@ -1,7 +1,8 @@
-package com.example.sg_mobiledata_statistics
+package com.example.sg_mobiledata_statistics.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.sg_mobiledata_statistics.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

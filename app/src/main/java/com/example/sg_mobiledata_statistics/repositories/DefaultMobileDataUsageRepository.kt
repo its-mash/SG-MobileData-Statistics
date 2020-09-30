@@ -7,6 +7,8 @@ import com.example.sg_mobiledata_statistics.data.local.YearlyMobileDataUsageReco
 import com.example.sg_mobiledata_statistics.data.remote.SingaporeGovDataAPI
 import com.example.sg_mobiledata_statistics.data.remote.responses.MobileDataUsageResponse
 import com.example.sg_mobiledata_statistics.other.Constants.RESOURCE_ID
+import com.example.sg_mobiledata_statistics.other.Constants.SUCCESS_REFRESH_MESSAGE
+import com.example.sg_mobiledata_statistics.other.Constants.UNKNOWN_ERROR_MESSAGE
 import com.example.sg_mobiledata_statistics.other.Resource
 import javax.inject.Inject
 
@@ -49,8 +51,8 @@ class DefaultMobileDataUsageRepository @Inject constructor(
                         val (year,quarter)=record.quarter.split('-')
                         insertMobileDataUsageRecord(MobileDataUsageRecord(year.toInt(),quarter,record.volume_of_mobile_data.toDouble()))
                     }
-                    return@let Resource.success(true,"Successfully Refreshed")
-                } ?: Resource.error("An unknown error occurred", null)
+                    return@let Resource.success(true, SUCCESS_REFRESH_MESSAGE)
+                } ?: Resource.error(UNKNOWN_ERROR_MESSAGE, null)
             } else {
                 Resource.error(response.message(), null)
             }

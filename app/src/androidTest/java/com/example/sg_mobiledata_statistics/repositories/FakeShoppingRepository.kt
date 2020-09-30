@@ -5,6 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import com.example.sg_mobiledata_statistics.data.local.MobileDataUsageRecord
 import com.example.sg_mobiledata_statistics.data.local.YearlyMobileDataUsageRecord
 import com.example.sg_mobiledata_statistics.other.Constants
+import com.example.sg_mobiledata_statistics.other.Constants.INTERNAL_SERVER_ERROR_MESSAGE
+import com.example.sg_mobiledata_statistics.other.Constants.NO_INTERNET_CONNECTION_MESSAGE
+import com.example.sg_mobiledata_statistics.other.Constants.SUCCESS_REFRESH_MESSAGE
+import com.example.sg_mobiledata_statistics.other.Constants.UNKNOWN_ERROR_MESSAGE
 import com.example.sg_mobiledata_statistics.other.Resource
 import java.net.ConnectException
 
@@ -15,18 +19,18 @@ class FakeMobileDataUsageRepository : MobileDataUsageRepository {
     private val observableMobileDataRecords = MutableLiveData<List<MobileDataUsageRecord>>(mobileDataUsageRecords)
     private val observableYearlyMobileDataUsageRecords = MutableLiveData<List<YearlyMobileDataUsageRecord>>()
 
-    private var notInternetConnection = false
-        set(value) {
-            field = value
-        }
+    private var noInternetConnection = false
+    fun setNoInternetConnection(flag: Boolean){
+        noInternetConnection=flag
+    }
     private var internalServerError = false
-        set(value) {
-            field = value
-        }
+    fun setInternalServerError(flag: Boolean){
+        internalServerError=flag
+    }
     private var responseParseError=false
-        set(value) {
-            field = value
-        }
+    fun setResponseParseError(flag: Boolean){
+        responseParseError=flag
+    }
 
     private fun refreshLiveData() {
         observableMobileDataRecords.postValue(mobileDataUsageRecords)
@@ -62,9 +66,9 @@ class FakeMobileDataUsageRepository : MobileDataUsageRepository {
     override suspend fun refreshMobileDataUsageRecords(): Resource<Boolean> {
         return try {
             when {
-                notInternetConnection -> throw Exception("Check Internet Connection availability")
-                internalServerError -> Resource.error("Internal Server Error",null)
-                responseParseError -> throw Exception("An Unknown Error Occurred")
+                noInternetConnection -> throw Exception(NO_INTERNET_CONNECTION_MESSAGE)
+                internalServerError -> Resource.error(INTERNAL_SERVER_ERROR_MESSAGE,null)
+                responseParseError -> throw Exception(UNKNOWN_ERROR_MESSAGE)
                 else -> {
                     val mobileDataUsageRecord1= MobileDataUsageRecord(2018,"Q1",0.020)
                     val mobileDataUsageRecord2= MobileDataUsageRecord(2018,"Q1",0.020)
@@ -74,7 +78,7 @@ class FakeMobileDataUsageRepository : MobileDataUsageRepository {
                     insertMobileDataUsageRecord(mobileDataUsageRecord2)
                     insertMobileDataUsageRecord(mobileDataUsageRecord3)
 
-                    Resource.success(true, "Successfully Refreshed")
+                    Resource.success(true, SUCCESS_REFRESH_MESSAGE)
                 }
             }
         } catch(e: Exception) {
