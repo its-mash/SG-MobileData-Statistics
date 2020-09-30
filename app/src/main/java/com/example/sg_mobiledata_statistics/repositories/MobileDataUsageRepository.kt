@@ -1,24 +1,21 @@
-package com.example.sg_mobiledata_statistics.data.local
+package com.example.sg_mobiledata_statistics.repositories
 
 import androidx.lifecycle.LiveData
-import androidx.room.*
+import com.example.sg_mobiledata_statistics.data.local.MobileDataUsageRecord
+import com.example.sg_mobiledata_statistics.data.local.YearlyMobileDataUsageRecord
+import com.example.sg_mobiledata_statistics.other.Resource
 
-@Dao
-interface MobileDataUsageDao {
+interface MobileDataUsageRepository {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMobileDataUsageRecord(mobileDataUsageRecord: MobileDataUsageRecord)
 
-    @Delete
     suspend fun deleteMobileDataUsageRecord(mobileDataUsageRecord: MobileDataUsageRecord)
 
-    @Delete
     fun clearMobileDataUsageRecord()
 
-    @Query("SELECT * FROM mobile_data_usage_record")
     fun observeAllMobileDataUsageRecords(): LiveData<List<MobileDataUsageRecord>>
 
-    @Query("SELECT year, SUM(volume) as totalVolume FROM mobile_data_usage_record")
     fun observeYearlyMobileDataUsage(): LiveData<List<YearlyMobileDataUsageRecord>>
 
+    suspend fun refreshMobileDataUsageRecords(): Resource<Boolean>
 }
