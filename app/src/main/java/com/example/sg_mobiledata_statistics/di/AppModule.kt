@@ -35,12 +35,6 @@ object AppModule {
     ) = database.mobileDataUsageDao()
 
 
-    @Singleton
-    @Provides
-    fun provideDefaultMobileDataUsageRepository(
-        dao: MobileDataUsageDao,
-        api: SingaporeGovDataAPI
-    ) = DefaultMobileDataUsageRepository(dao, api) as MobileDataUsageRepository
 
     @Singleton
     @Provides
@@ -51,6 +45,13 @@ object AppModule {
             .build()
             .create(SingaporeGovDataAPI::class.java)
     }
+
+    @Singleton
+    @Provides
+    fun provideMobileDataUsageRepository(
+        dao: MobileDataUsageDao,
+        api: SingaporeGovDataAPI
+    ) = DefaultMobileDataUsageRepository(dao, api) as MobileDataUsageRepository
 }
 
 
