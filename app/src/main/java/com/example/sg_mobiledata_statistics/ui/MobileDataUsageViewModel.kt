@@ -1,10 +1,8 @@
 package com.example.sg_mobiledata_statistics.ui
 
+import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.sg_mobiledata_statistics.other.Event
 import com.example.sg_mobiledata_statistics.other.Resource
 import com.example.sg_mobiledata_statistics.repositories.MobileDataUsageRepository
