@@ -1,7 +1,7 @@
 # SG-MobileData-Statistics App (Completed)
 
 
-Started this job assessment on Android Development(Kotlin) with no prior experience in Kotlin. Only had academic knowledge in android development(Java).  Two days of study and planning + 3 days to complete
+Started this job assessment on Android Development(Kotlin) with no prior experience in Kotlin. Only had academic knowledge in android development(Java).  Two days of study and planning + 2 days to complete
 
 
 ## Features
