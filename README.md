@@ -10,3 +10,6 @@ Started this job assessment on Android Development(Kotlin) with no prior experie
 * Offline Data Caching using Room Database and Dependency Injection
 * Unit Testing
 * Error Handling
+
+## Screenshots
+![](screenshots/1.jpeg)&nbsp;&nbsp;![](screenshots/2.jpeg)&nbsp;&nbsp;![](screenshots/3.jpeg)
