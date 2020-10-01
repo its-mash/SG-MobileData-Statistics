@@ -18,18 +18,24 @@ class MobileDataUsageListAdapter(private val yearlyMobileDataUsageRecords: List<
 
 
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-    holder.bindRepo(yearlyMobileDataUsageRecords[position])
+    if(position!=itemCount-1 && yearlyMobileDataUsageRecords[position].totalVolume<yearlyMobileDataUsageRecords[position+1].totalVolume)
+      holder.bindRepo(yearlyMobileDataUsageRecords[position],true)
+    else
+      holder.bindRepo(yearlyMobileDataUsageRecords[position])
+
   }
 
   override fun getItemCount(): Int = yearlyMobileDataUsageRecords.size
 
   class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    fun bindRepo(record: YearlyMobileDataUsageRecord ) {
+    fun bindRepo(record: YearlyMobileDataUsageRecord,decreaseIcon:Boolean=false ) {
       with(record) {
         itemView.year.text = record.year.toString()
         itemView.volume.text= record.totalVolume.toString()
-        if(decrease)
+        if(decreaseIcon)
           itemView.decrease_icon.visibility=View.VISIBLE
+        else
+          itemView.decrease_icon.visibility=View.INVISIBLE
       }
     }
   }

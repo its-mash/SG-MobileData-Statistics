@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SG-MobileData-Statistics</string>
+    <string name="app_name">SG MobileData Statistics</string>
     <string name="loading_data">Loading Data</string>
     <string name="offlineMessage">Offline Data</string>
     <string name="onlineMessage">Online Data</string>

@@ -31,16 +31,17 @@ class MainActivity : AppCompatActivity() {
         rvDataUsage.layoutManager=LinearLayoutManager(this)
 
 
-        viewModel.refreshMobileDataUsageStatus()
+//        viewModel.refreshMobileDataUsageStatus()
 
         viewModel.yearlyMobileDataUsageRecords.observe(this, Observer {
-            for(x in 0 until it.size-2) {
-                it[x].decrease= it[x+1].totalVolume > it[x].totalVolume
-            }
+//            for(x in 0 until it.size-2) {
+//                it[x].decrease= it[x+1].totalVolume > it[x].totalVolume
+//            }
             rvDataUsage.adapter=MobileDataUsageListAdapter(it)
 
-            if(it.isEmpty()){
+            if(status_text.text!=getString(R.string.loadingMsg) && it.isEmpty()){
                 status_text.text=getString(R.string.noDataMessage)
+                Toast.makeText(this@MainActivity,"Please ensure network connectivity",Toast.LENGTH_LONG).show()
             }
         })
         viewModel.mobileDataUsageRefreshStat.observe(this, Observer {
