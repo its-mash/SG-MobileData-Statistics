@@ -6,6 +6,8 @@ import com.example.sg_mobiledata_statistics.data.local.MobileDataUsageRecord
 import com.example.sg_mobiledata_statistics.data.local.YearlyMobileDataUsageRecord
 import com.example.sg_mobiledata_statistics.data.remote.SingaporeGovDataAPI
 import com.example.sg_mobiledata_statistics.data.remote.responses.MobileDataUsageResponse
+import com.example.sg_mobiledata_statistics.other.Constants.INTERNAL_SERVER_ERROR_MESSAGE
+import com.example.sg_mobiledata_statistics.other.Constants.NO_INTERNET_CONNECTION_MESSAGE
 import com.example.sg_mobiledata_statistics.other.Constants.RESOURCE_ID
 import com.example.sg_mobiledata_statistics.other.Constants.SUCCESS_REFRESH_MESSAGE
 import com.example.sg_mobiledata_statistics.other.Constants.UNKNOWN_ERROR_MESSAGE
@@ -54,10 +56,10 @@ class DefaultMobileDataUsageRepository @Inject constructor(
                     return@let Resource.success(true, SUCCESS_REFRESH_MESSAGE)
                 } ?: Resource.error(UNKNOWN_ERROR_MESSAGE, null)
             } else {
-                Resource.error(response.message(), null)
+                Resource.error(INTERNAL_SERVER_ERROR_MESSAGE, null)
             }
         } catch(e: Exception) {
-            Resource.error(e.localizedMessage, null)
+            Resource.error(NO_INTERNET_CONNECTION_MESSAGE, null)
         }
     }
 }

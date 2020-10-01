@@ -3,4 +3,6 @@
     <string name="loading_data">Loading Data</string>
     <string name="offlineMessage">Offline Data</string>
     <string name="onlineMessage">Online Data</string>
+    <string name="noDataMessage">No Available Data</string>
+    <string name="loadingMsg">Loading</string>
 </resources>
