@@ -12,4 +12,7 @@ Started this job assessment on Android Development(Kotlin) with no prior experie
 * Error Handling
 
 ## Screenshots
-|![](screenshots/1.jpeg) | ![](screenshots/2.jpeg) |![](screenshots/3.jpeg)|
+
+|   |   |   |
+|---|---|---|
+|  ![](screenshots/1.jpeg) | ![](screenshots/2.jpeg)  | ![](screenshots/3.jpeg)  |
