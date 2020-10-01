@@ -25,7 +25,7 @@ class DefaultMobileDataUsageRepository @Inject constructor(
         mobileDataUsageDao.deleteMobileDataUsageRecord(mobileDataUsageRecord)
     }
 
-    override fun clearMobileDataUsageRecord() {
+    override suspend fun clearMobileDataUsageRecord() {
         mobileDataUsageDao.clearMobileDataUsageRecord()
     }
     override fun observeAllMobileDataUsageRecords(): LiveData<List<MobileDataUsageRecord>> {

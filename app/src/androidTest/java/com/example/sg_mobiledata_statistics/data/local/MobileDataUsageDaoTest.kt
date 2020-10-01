@@ -64,15 +64,16 @@ class MobileDataUsageDaoTest {
     fun observeYearlyMobileDataUsage() = runBlockingTest {
         val mobileDataUsageRecord1= MobileDataUsageRecord(2018,"Q1",0.020)
         val mobileDataUsageRecord2= MobileDataUsageRecord(2018,"Q1",0.020)
-        val mobileDataUsageRecord3= MobileDataUsageRecord(2018,"Q1",0.020)
+        val mobileDataUsageRecord3= MobileDataUsageRecord(2019,"Q1",0.020)
 
         dao.insertMobileDataUsageRecord(mobileDataUsageRecord1)
         dao.insertMobileDataUsageRecord(mobileDataUsageRecord2)
         dao.insertMobileDataUsageRecord(mobileDataUsageRecord3)
 
         val yearlyRecords = dao.observeYearlyMobileDataUsage().getOrAwaitValue()
-
-        assertThat(yearlyRecords[0].totalVolume).isEqualTo(.06)
+        assertThat(yearlyRecords.count()).isEqualTo(2)
+        assertThat(yearlyRecords[0].totalVolume).isEqualTo(.04)
+        assertThat(yearlyRecords[1].totalVolume).isEqualTo(.02)
     }
 }
 

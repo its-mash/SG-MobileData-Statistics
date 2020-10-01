@@ -24,11 +24,12 @@ class MainActivity : AppCompatActivity() {
         viewModel.refreshMobileDataUsageStatus()
 //        viewModel=ViewModelProvider(this).get(MobileDataUsageViewModel::class.java)
 
-        viewModel.mobileDataUsageRefreshStat.observe(this, Observer {
+        viewModel.yearlyMobileDataUsageRecords.observe(this, Observer {
             msg.text=it.toString()
         })
         viewModel.mobileDataUsageRefreshStat.observe(this, Observer {
-            status.text=it.toString()
+            val resource=it.getContentIfNotHandled()
+            status.text=resource?.status.toString()+resource?.message.toString()
         })
         NetWatch.builder(this)
             .setCallBack(object : NetworkChangeReceiver_navigator {

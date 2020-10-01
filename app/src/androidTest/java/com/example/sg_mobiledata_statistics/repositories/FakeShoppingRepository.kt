@@ -50,7 +50,7 @@ class FakeMobileDataUsageRepository : MobileDataUsageRepository {
         refreshLiveData()
     }
 
-    override fun clearMobileDataUsageRecord() {
+    override suspend fun clearMobileDataUsageRecord() {
         mobileDataUsageRecords.clear()
         refreshLiveData()
     }
@@ -72,7 +72,7 @@ class FakeMobileDataUsageRepository : MobileDataUsageRepository {
                 else -> {
                     val mobileDataUsageRecord1= MobileDataUsageRecord(2018,"Q1",0.020)
                     val mobileDataUsageRecord2= MobileDataUsageRecord(2018,"Q1",0.020)
-                    val mobileDataUsageRecord3= MobileDataUsageRecord(2018,"Q1",0.020)
+                    val mobileDataUsageRecord3= MobileDataUsageRecord(2019,"Q1",0.020)
 
                     insertMobileDataUsageRecord(mobileDataUsageRecord1)
                     insertMobileDataUsageRecord(mobileDataUsageRecord2)

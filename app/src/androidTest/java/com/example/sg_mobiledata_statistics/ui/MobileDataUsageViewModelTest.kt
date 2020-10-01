@@ -68,6 +68,6 @@ class MobileDataUsageViewModelTest {
         assertThat(recordsCount).isEqualTo(3)
 
         val yearlyRecordsCount=viewModel.yearlyMobileDataUsageRecords.getOrAwaitValue ().count()
-        assertThat(yearlyRecordsCount).isEqualTo(1)
+        assertThat(yearlyRecordsCount).isEqualTo(2)
     }
 }

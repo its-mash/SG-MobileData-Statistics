@@ -11,7 +11,7 @@ interface MobileDataUsageRepository {
 
     suspend fun deleteMobileDataUsageRecord(mobileDataUsageRecord: MobileDataUsageRecord)
 
-    fun clearMobileDataUsageRecord()
+    suspend fun clearMobileDataUsageRecord()
 
     fun observeAllMobileDataUsageRecords(): LiveData<List<MobileDataUsageRecord>>
 
