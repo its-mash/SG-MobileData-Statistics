@@ -49,7 +49,7 @@ class DefaultMobileDataUsageRepository @Inject constructor(
                     val records=it.result.records
                     for (record in records){
                         val (year,quarter)=record.quarter.split('-')
-                        insertMobileDataUsageRecord(MobileDataUsageRecord(year.toInt(),quarter,record.volume_of_mobile_data.toDouble()))
+                        insertMobileDataUsageRecord(MobileDataUsageRecord(year.toInt(),quarter,record.volume_of_mobile_data.toDouble(),record._id))
                     }
                     return@let Resource.success(true, SUCCESS_REFRESH_MESSAGE)
                 } ?: Resource.error(UNKNOWN_ERROR_MESSAGE, null)

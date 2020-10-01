@@ -72,8 +72,8 @@ class MobileDataUsageDaoTest {
 
         val yearlyRecords = dao.observeYearlyMobileDataUsage().getOrAwaitValue()
         assertThat(yearlyRecords.count()).isEqualTo(2)
-        assertThat(yearlyRecords[0].totalVolume).isEqualTo(.04)
-        assertThat(yearlyRecords[1].totalVolume).isEqualTo(.02)
+        assertThat(yearlyRecords[0].totalVolume).isEqualTo(.02)
+        assertThat(yearlyRecords[1].totalVolume).isEqualTo(.04)
     }
 }
 

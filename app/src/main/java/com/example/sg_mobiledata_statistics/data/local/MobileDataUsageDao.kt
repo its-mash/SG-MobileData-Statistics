@@ -6,7 +6,7 @@ import androidx.room.*
 @Dao
 interface MobileDataUsageDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertMobileDataUsageRecord(mobileDataUsageRecord: MobileDataUsageRecord)
 
     @Delete
@@ -18,7 +18,7 @@ interface MobileDataUsageDao {
     @Query("SELECT * FROM mobile_data_usage_record")
     fun observeAllMobileDataUsageRecords(): LiveData<List<MobileDataUsageRecord>>
 
-    @Query("SELECT year, SUM(volume) as totalVolume FROM mobile_data_usage_record GROUP BY year")
+    @Query("SELECT year, SUM(volume) as totalVolume, 1!=1 as decrease FROM mobile_data_usage_record GROUP BY year ORDER BY year DESC")
     fun observeYearlyMobileDataUsage(): LiveData<List<YearlyMobileDataUsageRecord>>
 
 }
